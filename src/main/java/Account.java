@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 public class Account {
 
     private final String name;
@@ -8,29 +10,8 @@ public class Account {
 
     public boolean checkNameToEmboss() {
 
+        if (name == null) return false;
 
-        return lengthOfString(name) && spaceOfString(name);
-    }
-
-    private boolean lengthOfString(String initialString) {
-        return initialString.length() >= 3 && initialString.length() <= 19;
-    }
-
-    private boolean spaceOfString(String initialString) {
-        if (numberOfSubstrings(initialString) == 1) {
-            return !initialString.startsWith(" ") && !initialString.endsWith(" ");
-        }
-
-        return false;
-    }
-
-    private int numberOfSubstrings(String initialString) {
-        int i = initialString.indexOf(" ");
-        int count = 0;
-        while (i != -1) {
-            i = initialString.indexOf(" ", i + 1);
-            count += 1;
-        }
-        return count;
+        return Pattern.matches("^[a-zA-Zа-яА-Я]{1,9}+\\s?+[a-zA-Zа-яА-Я]{1,9}+$", name);
     }
 }
