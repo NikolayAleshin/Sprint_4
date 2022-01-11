@@ -12,6 +12,8 @@ public class Account {
 
         if (name == null) return false;
 
-        return Pattern.matches("^[a-zA-Zа-яА-Я]{1,9}+\\s?+[a-zA-Zа-яА-Я]{1,9}+$", name);
+        return Pattern.matches("^[a-zA-Zа-яА-Я]+\\s?+[a-zA-Zа-яА-Я]+$", name)
+                && name.length()>=3
+                && name.length()<=19;
     }
 }
